@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "30941603816",
+    "project_id": "reachout-97e8a",
+    "storage_bucket": "reachout-97e8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30941603816:android:b171f926f2b55c4ce7a65d",
+        "android_client_info": {
+          "package_name": "com.example.reachout2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30941603816-peb14i2qkjv07sf765nr88it1mi4cpst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reachout2",
+            "certificate_hash": "bfbdbb9e69004591d3975d73a799c5d559738d3a"
+          }
+        },
+        {
+          "client_id": "30941603816-e3k5c89j9lt8vohag4gd7dg3i11eq4f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0oyFH6cb-oK1PQ5-_yGaa4STnJunOc5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30941603816-e3k5c89j9lt8vohag4gd7dg3i11eq4f2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "30941603816-cp67avnntq9t25a2qmr05kbdanqln3q9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.reachout2.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
