@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Constants {
   static const logoPath = 'assets/images/logo.png';
   static const loginEmotePath = 'assets/images/loginEmote.png';
@@ -26,4 +28,6 @@ class Constants {
   static const String reportPic = "assets/images/report.png";
   static const String homeworkPic = "assets/images/homework.png";
   static const String homework2Pic = "assets/images/homework2.png";
+
+ 
 }
