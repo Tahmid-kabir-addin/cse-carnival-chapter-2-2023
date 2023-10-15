@@ -26,7 +26,7 @@ class _StudentHomeState extends ConsumerState<TeacherHome> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isSelected[0] = true;
+    isSelected[1] = true;
   }
 
   @override
@@ -136,22 +136,23 @@ class _StudentHomeState extends ConsumerState<TeacherHome> {
                               // print();
                               final post = posts[index];
                               // print(post);
-                              if (user.value!.role == 'student')
-                                return GestureDetector(
-                                  onTap: () => Routemaster.of(context).push('/post-details/${post.id}'),
-                                  child: BlogCard(
-                                      imagePath: user.value!.profilePic,
-                                      authorName: user.value!.name,
-                                      title: post.title,
-                                      blogImagePath: post.banner == ''
-                                          ? Constants.scienceBanner
-                                          : post.banner,
-                                      tags: [post.category],
-                                      rootContext: context,
-                                      onremoveTap: () {},
-                                      takeToAuthorProfile: () {},
-                                      width: 80),
-                                );
+                              // if (user.value!.role == 'student')
+                              return GestureDetector(
+                                onTap: () => Routemaster.of(context)
+                                    .push('/post-details-teacher/${post.id}'),
+                                child: BlogCard(
+                                    imagePath: user.value!.profilePic,
+                                    authorName: user.value!.name,
+                                    title: post.title,
+                                    blogImagePath: post.banner == ''
+                                        ? Constants.scienceBanner
+                                        : post.banner,
+                                    tags: [post.category],
+                                    rootContext: context,
+                                    onremoveTap: () {},
+                                    takeToAuthorProfile: () {},
+                                    width: 80),
+                              );
                             },
                             separatorBuilder: ((context, index) {
                               return SizedBox(

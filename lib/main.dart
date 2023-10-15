@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reachout2/constants/colors.dart';
 import 'package:reachout2/constants/constants.dart';
 import 'package:reachout2/theme/pallete.dart';
 import 'package:reachout2/core/common/error_text.dart';
@@ -43,11 +44,12 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final customColor = Color(0xFF3AD4E1);
     return ref.watch(authStateChangeProvider).when(
       data: (data) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'reachout2',
-        // theme: Pallete.darkModeAppTheme,
+        theme: ThemeData(primarySwatch: Colors.cyan),
         routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
           if (data != null) {
             getData(ref, data);

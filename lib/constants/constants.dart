@@ -31,5 +31,8 @@ class Constants {
   static const String voiceAssistant = "assets/images/voiceAssistat.png";
   static const String student = "assets/images/student.jpg";
 
- 
+  static const scienceDefault =
+      'https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80';
+  static const chemistryDefault =
+      'https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2034&q=80';
 }

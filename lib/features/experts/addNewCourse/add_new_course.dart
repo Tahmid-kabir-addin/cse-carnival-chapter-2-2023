@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:reachout2/constants/colors.dart';
+import 'package:routemaster/routemaster.dart';
 
 class AddNewCourse extends StatefulWidget {
   const AddNewCourse({super.key});
@@ -15,9 +16,13 @@ class _AddNewCourseState extends State<AddNewCourse> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          child: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
+          onTap: () => Routemaster.of(context).pop(),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: const Icon(
+              Icons.keyboard_arrow_left,
+              color: Colors.black,
+            ),
           ),
         ),
         backgroundColor: Colors.transparent,

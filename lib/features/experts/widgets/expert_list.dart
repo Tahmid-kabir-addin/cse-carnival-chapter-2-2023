@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routemaster/routemaster.dart';
 
 class ExpertWidget extends StatelessWidget {
   final String expertName;
@@ -29,7 +30,7 @@ class ExpertWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         
-        onTap: () {},
+        onTap: () => Routemaster.of(context).push('/student-view-teacher'),
         child: Row(
           children: [
             Padding(

@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/constants/colors.dart';
-import 'package:hackathon/constants/image_strings.dart';
-import 'package:hackathon/screens/studentProfile/widgets/courses_List.dart';
-import 'package:hackathon/screens/studentProfile/widgets/edit_profile_content.dart';
-import 'package:hackathon/screens/studentHomePage/widgets/toggleButtonChild.dart';
-import 'package:hackathon/screens/teacherProfile/widgets/teacher_courses_List.dart';
-import 'package:hackathon/utills/blog_card.dart';
 import 'package:reachout2/constants/colors.dart';
+import 'package:reachout2/core/constants/constants.dart';
 import 'package:reachout2/features/home/screens/Studenthome_screen/widgets/toggle_button_child.dart';
 import 'package:reachout2/features/user/screens/studentProfile/widgets/blog_card.dart';
 
 import '../../user/screens/studentProfile/widgets/edit_profile_content.dart';
 import 'widgets/teacher_courses_List.dart';
-
+import 'package:routemaster/routemaster.dart';
 class TeacherProfile extends StatefulWidget {
   const TeacherProfile({super.key});
 
@@ -35,7 +29,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: () {},
+          onTap: () => Routemaster.of(context).pop(),
           child: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
@@ -61,13 +55,13 @@ class _TeacherProfileState extends State<TeacherProfile> {
             children: [
               Center(
                 child: CircleAvatar(
-                  child: Image.asset(
-                    studentPic,
+                  minRadius: 50,
+                  backgroundColor: Colors.grey.withOpacity(0.2),
+                  child: Image.network(
+                    Constants.avatarDefault,
                     height: 70,
                     width: 70,
                   ),
-                  minRadius: 50,
-                  backgroundColor: Colors.grey.withOpacity(0.2),
                 ),
               ),
               const SizedBox(
@@ -134,12 +128,11 @@ class _TeacherProfileState extends State<TeacherProfile> {
                   child: Column(
                     children: [
                       BlogCard(
-                        imagePath: "",
+                        imagePath: Constants.avatarDefault,
                         authorName: 'Muntasir Mamun',
                         title: 'Hello Brother',
-                        subtitle: 'Helllo guysssssss',
-                        blogImagePath: "",
-                        tags: ['Science'],
+                        blogImagePath: Constants.scienceDefault,
+                        tags: ['Biology'],
                         rootContext: context,
                         onremoveTap: () {},
                         takeToAuthorProfile: () {},
@@ -148,12 +141,11 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: BlogCard(
-                          imagePath: "",
+                          imagePath: Constants.avatarDefault,
                           authorName: 'Tahmid Kabir',
                           title: 'Hello Brother',
-                          subtitle: 'Helllo guysssssss',
-                          blogImagePath: "",
-                          tags: ['Science'],
+                          blogImagePath: Constants.chemistryDefault,
+                          tags: ['Physics', 'Chemistry'],
                           rootContext: context,
                           onremoveTap: () {},
                           takeToAuthorProfile: () {},
@@ -179,7 +171,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                         width: double.infinity,
                         height: 40,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => Routemaster.of(context).push('/new-course'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                           ),

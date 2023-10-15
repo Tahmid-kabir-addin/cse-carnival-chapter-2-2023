@@ -48,7 +48,7 @@ class AuthController extends StateNotifier<bool> {
     state = true;
     print("calling auth_repository signInWithGoogle");
     final user = await _authRepository.signInWithGoogle(role);
-    print(user);
+    // print(user);
     print("back from auth_repository signInWithGoogle");
 
     user.fold((l) => showSnackBar(context, l.message), (userModel) {

@@ -33,7 +33,7 @@ class teacherDrawer extends ConsumerWidget {
                 color: Colors.transparent,
               ),
               accountName: Text(
-                userName,
+                user!.name,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -42,7 +42,7 @@ class teacherDrawer extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               accountEmail: Text(
-                userEmail,
+                user!.email,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -51,11 +51,11 @@ class teacherDrawer extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(picturePath),
+                backgroundImage: NetworkImage(user!.profilePic),
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () => Routemaster.of(context).push('/teacher-profile'),
               leading: Icon(Icons.person),
               title: Text(
                 'Profile',
@@ -66,7 +66,7 @@ class teacherDrawer extends ConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: (){},
               leading: Icon(Icons.message),
               title: Text(
                 'Messages',
@@ -77,7 +77,7 @@ class teacherDrawer extends ConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () => Routemaster.of(context).push('/approval'),
               leading: Icon(Icons.question_mark),
               title: Text(
                 'Approval',

@@ -56,7 +56,7 @@ class _CommentsState extends State<Comments> {
             children: [
               Container(
                 // width: double.infinity,
-                height: 200,
+                height: MediaQuery.of(context).size.height - 220,
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1,
@@ -93,7 +93,7 @@ class _CommentsState extends State<Comments> {
                   children: [
                     Container(
                       height: 120,
-                      width: 170,
+                      width: MediaQuery.of(context).size.width - 90,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
@@ -109,16 +109,19 @@ class _CommentsState extends State<Comments> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: primaryColor,
-                      ),
-                      child: const Icon(
-                        Icons.send,
-                        color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 3, 0),
+                      child: Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: primaryColor,
+                        ),
+                        child: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
                       ),
                     )
                   ],

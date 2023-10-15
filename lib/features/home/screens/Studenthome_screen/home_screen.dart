@@ -100,18 +100,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 // print();
                                 final post = posts[index];
                                 // print(post);
-                                return BlogCard(
-                                    imagePath: user.value!.profilePic,
-                                    authorName: user.value!.name,
-                                    title: post.title,
-                                    blogImagePath: post.banner == ''
-                                        ? Constants.scienceBanner
-                                        : post.banner,
-                                    tags: [post.category],
-                                    rootContext: context,
-                                    onremoveTap: () {},
-                                    takeToAuthorProfile: () {},
-                                    width: 80);
+                                // if (user.value!.role == 'expert')
+                                  return GestureDetector(
+                                    onTap: () => Routemaster.of(context).push('/post-details/${post.id}'),
+                                    child: BlogCard(
+                                        imagePath: user.value!.profilePic,
+                                        authorName: user.value!.name,
+                                        title: post.title,
+                                        blogImagePath: post.banner == ''
+                                            ? Constants.scienceBanner
+                                            : post.banner,
+                                        tags: [post.category],
+                                        rootContext: context,
+                                        onremoveTap: () {},
+                                        takeToAuthorProfile: () {},
+                                        width: 80),
+                                  );
                               },
                               separatorBuilder: ((context, index) {
                                 return SizedBox(
@@ -143,15 +147,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 final post = posts[index];
                                 // print(post);
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () => Routemaster.of(context).push('/post-details/${post.id}'),
                                   child: BlogCard(
-                                      imagePath: "user.value!.profilePic",
-                                      authorName: "user.value!.name",
-                                      title: "post.title",
+                                      imagePath: user.value!.profilePic,
+                                      authorName: user.value!.name,
+                                      title: post.title,
                                       blogImagePath: post.banner == ''
                                           ? Constants.scienceBanner
                                           : post.banner,
-                                      tags: ["post.category"],
+                                      tags: [post.category],
                                       rootContext: context,
                                       onremoveTap: () {},
                                       takeToAuthorProfile: () {},

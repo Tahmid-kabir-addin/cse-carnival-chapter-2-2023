@@ -13,7 +13,7 @@ class _TeacherCourseListState extends State<TeacherCourseList> {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        itemCount: 4,
+        itemCount: 3,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,

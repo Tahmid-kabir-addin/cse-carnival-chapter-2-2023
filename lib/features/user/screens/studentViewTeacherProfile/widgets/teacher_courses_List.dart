@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/screens/studentViewTeacherProfile/widgets/student_view_courses_card.dart';
+import 'package:reachout2/features/user/screens/studentViewTeacherProfile/widgets/student_view_courses_card.dart';
 
 class StudentViewTeacherCourseList extends StatefulWidget {
   const StudentViewTeacherCourseList({super.key});

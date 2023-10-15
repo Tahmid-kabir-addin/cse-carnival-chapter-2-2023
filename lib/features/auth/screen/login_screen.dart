@@ -15,6 +15,9 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
+  var border = BorderSide(width: 2, color: Color(0xFF3AD4E1));
+  bool isStudent = true;
+  bool isExpert = false;
   String _role = 'student';
   void setRole(String role) {
     setState(() {
@@ -25,6 +28,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(authControllerProvider);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Pallete.whiteColor,
@@ -58,14 +62,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      onTap: () => setRole('student'),
+                      onTap: () {
+                        setRole('student');
+                        isStudent = true;
+                        isExpert = false;
+                        setState(() {});
+                      },
                       child: Container(
                         width: 155,
                         height: 188,
                         decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(width: 2, color: Color(0xFF3AD4E1)),
+                            side: isStudent ? border : BorderSide.none,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           shadows: [
@@ -103,14 +111,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => setRole('expert'),
+                      onTap: () {
+                        setRole('expert');
+                        isExpert = true;
+                        isStudent = false;
+                        setState(() {});
+                      },
                       child: Container(
                         width: 155,
                         height: 188,
                         decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(width: 2, color: Color(0xFF3AD4E1)),
+                            side: isExpert ? border : BorderSide.none,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           shadows: [

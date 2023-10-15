@@ -1,12 +1,12 @@
-import 'package:hackathon/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:reachout2/constants/constants.dart';
 
 Map<int, String> subjectImages = {
-  1: mathsPic,
-  2: sciencePic,
-  3: biologyPic,
-  4: mathematicsPic,
-  5: physicsPic,
+  1: Constants.mathsPic,
+  2: Constants.sciencePic,
+  3: Constants.physicsPic,
+  4: Constants.biologyPic,
+  5: Constants.physicsPic,
 };
 
 class CoursesCard extends StatelessWidget {
@@ -24,7 +24,7 @@ class CoursesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String subjectImage = subjectImages[idx % 5] ?? sciencePic;
+    String subjectImage = subjectImages[idx % 5] ?? Constants.sciencePic;
     return Container(
       decoration: ShapeDecoration(
         color: idx % 2 == 0 ? Color(0x35E8914F) : Color(0x35FB95E1),

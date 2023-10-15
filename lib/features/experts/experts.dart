@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reachout2/constants/colors.dart';
 import 'package:reachout2/features/experts/widgets/expert_list.dart';
+import 'package:reachout2/constants/constants.dart';
+import 'package:routemaster/routemaster.dart';
 
 class ExpertsScreen extends StatefulWidget {
   const ExpertsScreen({super.key});
@@ -22,10 +25,13 @@ class _ExpertsScreenState extends State<ExpertsScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: () {},
-          child: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
+          onTap: () => Routemaster.of(context).pop(),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const Icon(
+              Icons.keyboard_arrow_left,
+              color: Colors.black,
+            ),
           ),
         ),
         title: const Text(
@@ -139,7 +145,7 @@ class _ExpertsScreenState extends State<ExpertsScreen> {
               expertName: 'Muntasir Mamun',
               expertIn: 'Physics',
               totalUpvote: '158',
-              expertImage: studentPic,
+              expertImage: Constants.voiceAssistant,
             ),
             SizedBox(
               height: 10,
@@ -159,7 +165,7 @@ class _ExpertsScreenState extends State<ExpertsScreen> {
               expertName: 'Muntasir Mamun',
               expertIn: 'Physics',
               totalUpvote: '158',
-              expertImage: studentPic,
+              expertImage: Constants.studenetPic,
             ),
             SizedBox(
               height: 10,
@@ -179,7 +185,7 @@ class _ExpertsScreenState extends State<ExpertsScreen> {
               expertName: 'Muntasir Mamun',
               expertIn: 'Physics',
               totalUpvote: '158',
-              expertImage: studentPic,
+              expertImage: Constants.student,
             ),
             SizedBox(
               height: 10,
@@ -199,7 +205,7 @@ class _ExpertsScreenState extends State<ExpertsScreen> {
               expertName: 'Muntasir Mamun',
               expertIn: 'Physics',
               totalUpvote: '158',
-              expertImage: studentPic,
+              expertImage: Constants.voiceAssistant,
             )
           ],
         ),

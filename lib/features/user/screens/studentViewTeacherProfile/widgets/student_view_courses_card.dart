@@ -1,13 +1,14 @@
-import 'package:hackathon/constants/colors.dart';
-import 'package:hackathon/constants/image_strings.dart';
+
 import 'package:flutter/material.dart';
+import 'package:reachout2/constants/colors.dart';
+import 'package:reachout2/constants/constants.dart';
 
 Map<int, String> subjectImages = {
-  1: mathsPic,
-  2: sciencePic,
-  3: biologyPic,
-  4: mathematicsPic,
-  5: physicsPic,
+  // 1: mathsPic,
+  // 2: sciencePic,
+  // 3: biologyPic,
+  // 4: mathematicsPic,
+  // 5: physicsPic,
 };
 
 class StudentViewCoursesCard extends StatelessWidget {
@@ -25,7 +26,7 @@ class StudentViewCoursesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String subjectImage = subjectImages[idx % 5] ?? sciencePic;
+    // String subjectImage = subjectImages[idx % 5] ?? Constant;
     return Container(
       decoration: ShapeDecoration(
         color: idx % 2 == 0 ? Color(0x35E8914F) : Color(0x35FB95E1),
@@ -36,8 +37,8 @@ class StudentViewCoursesCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              subjectImage,
+            Image.network(
+              Constants.chemistryDefault,
               height: 40,
               width: 60,
             ),

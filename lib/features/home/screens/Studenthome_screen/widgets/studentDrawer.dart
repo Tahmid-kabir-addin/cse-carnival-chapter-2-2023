@@ -66,7 +66,7 @@ class studentDrawer extends ConsumerWidget {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () => Routemaster.of(context).push('/experts'),
               leading: Icon(Icons.school),
               title: Text(
                 'Experts',

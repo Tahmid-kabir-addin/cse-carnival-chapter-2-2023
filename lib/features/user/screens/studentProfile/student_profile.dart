@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:reachout2/common/error_text.dart';
 import 'package:reachout2/common/loader.dart';
+import 'package:reachout2/constants/colors.dart';
 import 'package:reachout2/constants/constants.dart';
 import 'package:reachout2/features/auth/controller/auth_controller.dart';
+import 'package:reachout2/features/experts/teacherProfile/widgets/teacher_courses_List.dart';
 import 'package:reachout2/features/home/controller/home_controller.dart';
 import 'package:reachout2/features/home/screens/Studenthome_screen/widgets/toggle_button_child.dart';
 
@@ -169,9 +171,34 @@ class _StudentProfileState extends ConsumerState<StudentProfile> {
               // Sho
 
               if (isSelected[1])
-                Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    child: CourseList()),
+                Scrollbar(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.47,
+                        child: TeacherCourseList(),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      // Container(
+                      //   width: double.infinity,
+                      //   height: 40,
+                      //   child: ElevatedButton(
+                      //     onPressed: () =>
+                      //         Routemaster.of(context).push('/new-course'),
+                      //     style: ElevatedButton.styleFrom(
+                      //       backgroundColor: primaryColor,
+                      //     ),
+                      //     child: const Text(
+                      //       'Add New Course',
+                      //       style: TextStyle(fontWeight: FontWeight.bold),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                ),
               // Show Courses content when index is 1
               if (isSelected[2]) StudentEditProfile(),
             ],

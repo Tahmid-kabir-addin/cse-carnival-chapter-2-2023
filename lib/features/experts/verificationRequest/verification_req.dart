@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:reachout2/constants/colors.dart';
+import 'package:routemaster/routemaster.dart';
 
 class VerificationRequest extends StatefulWidget {
   const VerificationRequest({super.key});
@@ -23,6 +24,7 @@ class _VerificationRequestState extends State<VerificationRequest> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
+          onTap: () => Routemaster.of(context).pop(),
           child: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,

@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/constants/colors.dart';
-import 'package:hackathon/constants/image_strings.dart';
-import 'package:hackathon/screens/studentProfile/widgets/courses_List.dart';
-import 'package:hackathon/screens/studentProfile/widgets/edit_profile_content.dart';
-import 'package:hackathon/screens/studentHomePage/widgets/toggleButtonChild.dart';
-import 'package:hackathon/screens/studentViewTeacherProfile/widgets/teacher_courses_List.dart';
-import 'package:hackathon/screens/teacherProfile/widgets/teacher_courses_List.dart';
-import 'package:hackathon/utills/blog_card.dart';
 import 'package:reachout2/constants/colors.dart';
+import 'package:reachout2/constants/constants.dart';
 import 'package:reachout2/features/user/screens/studentProfile/widgets/blog_card.dart';
 import 'package:reachout2/features/user/screens/studentViewTeacherProfile/widgets/teacher_courses_List.dart';
 
 import '../../../home/screens/Studenthome_screen/widgets/toggle_button_child.dart';
+import 'package:routemaster/routemaster.dart';
 
 class StudentViewTeacherProfile extends StatefulWidget {
   const StudentViewTeacherProfile({super.key});
@@ -36,7 +30,7 @@ class _StudentViewTeacherProfileState extends State<StudentViewTeacherProfile> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: () {},
+          onTap: () => Routemaster.of(context).pop(),
           child: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
@@ -62,12 +56,10 @@ class _StudentViewTeacherProfileState extends State<StudentViewTeacherProfile> {
             children: [
               Center(
                 child: CircleAvatar(
-                  child: Image.asset(
-                    studentPic,
-                    height: 70,
-                    width: 70,
+                  backgroundImage: AssetImage(
+                    Constants.studenetPic,
                   ),
-                  minRadius: 50,
+                  radius: 50,
                   backgroundColor: Colors.grey.withOpacity(0.2),
                 ),
               ),
@@ -167,11 +159,10 @@ class _StudentViewTeacherProfileState extends State<StudentViewTeacherProfile> {
                   child: Column(
                     children: [
                       BlogCard(
-                        imagePath: studentPic,
+                        imagePath: Constants.avatarDefault,
                         authorName: 'Muntasir Mamun',
                         title: 'Hello Brother',
-                        subtitle: 'Helllo guysssssss',
-                        blogImagePath: scienceBanner,
+                        blogImagePath: Constants.scienceDefault,
                         tags: ['Science'],
                         rootContext: context,
                         onremoveTap: () {},
@@ -181,11 +172,10 @@ class _StudentViewTeacherProfileState extends State<StudentViewTeacherProfile> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: BlogCard(
-                          imagePath: studentPic,
+                          imagePath: Constants.avatarDefault,
                           authorName: 'Tahmid Kabir',
                           title: 'Hello Brother',
-                          subtitle: 'Helllo guysssssss',
-                          blogImagePath: scienceBanner,
+                          blogImagePath: Constants.chemistryDefault,
                           tags: ['Science'],
                           rootContext: context,
                           onremoveTap: () {},

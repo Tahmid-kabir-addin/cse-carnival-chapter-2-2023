@@ -6,15 +6,15 @@ import 'package:reachout2/features/auth/controller/auth_controller.dart';
 import 'package:reachout2/features/home/controller/home_controller.dart';
 import 'package:routemaster/routemaster.dart';
 
-class PostDetails extends ConsumerStatefulWidget {
+class PostDetailsTeacher extends ConsumerStatefulWidget {
   final String id;
-  const PostDetails({super.key, required this.id});
+  const PostDetailsTeacher({super.key, required this.id});
 
   @override
-  ConsumerState<PostDetails> createState() => _PostDetailsState();
+  ConsumerState<PostDetailsTeacher> createState() => _PostDetailsTeacherState();
 }
 
-class _PostDetailsState extends ConsumerState<PostDetails> {
+class _PostDetailsTeacherState extends ConsumerState<PostDetailsTeacher> {
   bool isTapped = false;
   String title = "How Momentum Works?";
   String profilePicPath = "assets/images/image.jpg";
@@ -156,7 +156,7 @@ class _PostDetailsState extends ConsumerState<PostDetails> {
                 left: 0,
                 right: 0,
                 child: GestureDetector(
-                  onTap: () => Routemaster.of(context).push('/comments-student/${widget.id}'),
+                  onTap: () => Routemaster.of(context).push('/comments/${widget.id}'),
                   child: Container(
                     height: 60,
                     width: double.infinity,

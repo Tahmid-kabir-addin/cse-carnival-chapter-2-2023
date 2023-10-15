@@ -30,7 +30,7 @@ class commentCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Container(
-        height: 200,
+        // height: 200,
         padding: EdgeInsets.all(5),
         width: double.infinity,
         child: SingleChildScrollView(
