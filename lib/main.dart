@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reachout2/constants/constants.dart';
 import 'package:reachout2/theme/pallete.dart';
 import 'package:reachout2/core/common/error_text.dart';
 import 'package:reachout2/core/common/loader.dart';

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:reachout2/common/comments.dart';
+import 'package:reachout2/common/post_details.dart';
 import 'package:reachout2/features/auth/screen/login_screen.dart';
 import 'package:reachout2/features/community/screens/add_mods_screen.dart';
 import 'package:reachout2/features/community/screens/community_screen.dart';
 import 'package:reachout2/features/community/screens/create_community_screen.dart';
 import 'package:reachout2/features/community/screens/edit_community_screen.dart';
 import 'package:reachout2/features/community/screens/mod_tools_screen.dart';
+import 'package:reachout2/features/experts/post_blogs.dart';
 import 'package:reachout2/features/home/screens/Studenthome_screen/home_screen.dart';
 import 'package:reachout2/features/user/screens/edit_user_screen.dart';
+import 'package:reachout2/features/user/screens/postQuestion/post_question.dart';
 import 'package:reachout2/features/user/screens/studentProfile/student_profile.dart';
 import 'package:reachout2/features/user/screens/user_profile_screens.dart';
 import 'package:routemaster/routemaster.dart';
@@ -19,6 +23,10 @@ final loggedInRoute = RouteMap(routes: {
   '/': (_) => const MaterialPage(child: HomeScreen()),
   '/student-profile': (_) =>
       const MaterialPage(child: StudentProfile()),
+  '/post':(_) => const MaterialPage(child: PostQuestion()),
+  '/post-expert':(_) => const MaterialPage(child: PostBlogs()),
+  '/post-details/:id':(route) => MaterialPage(child: PostDetails(id: route.pathParameters['id']!)),
+  '/comments/:id':(route) => MaterialPage(child: Comments(id: route.pathParameters['id']!)),
   // '/create-community': (_) =>
   //     const MaterialPage(child: CreateCommunityScreen()),
   // '/r/:name': (route) =>

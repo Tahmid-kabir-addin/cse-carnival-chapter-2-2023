@@ -7,7 +7,6 @@ class BlogCard extends StatelessWidget {
   final String imagePath;
   final String authorName;
   final String title;
-  final String subtitle;
   final String blogImagePath;
   final List<String> tags;
   final BuildContext rootContext;
@@ -20,7 +19,6 @@ class BlogCard extends StatelessWidget {
       required this.imagePath,
       required this.authorName,
       required this.title,
-      required this.subtitle,
       required this.blogImagePath,
       required this.tags,
       required this.rootContext,
@@ -46,9 +44,9 @@ class BlogCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
                       child: CircleAvatar(
-                        backgroundImage: AssetImage(imagePath),
+                        backgroundImage: NetworkImage(imagePath),
                         radius: 20,
                       ),
                     ),
@@ -83,7 +81,7 @@ class BlogCard extends StatelessWidget {
                     child: Container(
                       height: 50,
                       width: 50,
-                      child: Image.asset(
+                      child: Image.network(
                         blogImagePath,
                         fit: BoxFit.cover,
                       ),
@@ -91,25 +89,8 @@ class BlogCard extends StatelessWidget {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Container(
-                      height: 40,
-                      width: 250,
-                      child: SingleChildScrollView(
-                        child: Text(
-                          subtitle,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 12, color: Colors.grey.shade600),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+              SizedBox(
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

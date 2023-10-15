@@ -30,6 +30,7 @@ final getUserDataProvider = StreamProvider.family((ref, String uid) {
   return authController.getUserData(uid);
 });
 
+
 class AuthController extends StateNotifier<bool> {
   late final AuthRepository _authRepository;
   final Ref _ref;
@@ -41,11 +42,12 @@ class AuthController extends StateNotifier<bool> {
 
   Stream<User?> get authStateChange => _authRepository.authStateChange;
 
-  void signInWithGoogle(BuildContext context) async {
+  void signInWithGoogle(BuildContext context, String role) async {
+    print(role);
     print("Inside signInWithGoogle method of auth_controller class");
     state = true;
     print("calling auth_repository signInWithGoogle");
-    final user = await _authRepository.signInWithGoogle();
+    final user = await _authRepository.signInWithGoogle(role);
     print(user);
     print("back from auth_repository signInWithGoogle");
 

@@ -1,31 +1,78 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:reachout2/constants/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reachout2/features/auth/controller/auth_controller.dart';
+import 'package:reachout2/features/user/user_controller.dart';
+import 'package:reachout2/models/post_model.dart';
+import 'package:reachout2/models/user_model.dart';
+import 'package:reachout2/utils.dart';
+import 'package:routemaster/routemaster.dart';
 
-class PostQuestion extends StatefulWidget {
+class PostQuestion extends ConsumerStatefulWidget {
   const PostQuestion({super.key});
 
   @override
-  State<PostQuestion> createState() => _PostQuestionState();
+  ConsumerState<PostQuestion> createState() => _PostQuestionState();
 }
 
-String dropdownValue = 'Physics';
-
-class _PostQuestionState extends State<PostQuestion> {
+class _PostQuestionState extends ConsumerState<PostQuestion> {
   void dropdownCallback(String? selectedValue) {
     setState(() {
-      dropdownValue = selectedValue!;
+      _dropDownValue = selectedValue!;
     });
+  }
+
+  File? bannerFile;
+
+  String _dropDownValue = 'Physics';
+
+  final TextEditingController titleController = TextEditingController();
+  final contentController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleController.dispose();
+    contentController.dispose();
+  }
+
+  void save(UserModel user, BuildContext context) {
+    ref.watch(userControllerProvider.notifier).createPost(
+          context,
+          titleController.text.trim(),
+          contentController.text.trim(),
+          bannerFile,
+          user,
+          _dropDownValue,
+        );
+  }
+
+  void selectBannerImage() async {
+    final res = await pickImage();
+
+    if (res != null) {
+      setState(() {
+        bannerFile = File(res.files.first.path!);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(userProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () => Routemaster.of(context).pop(),
+            child: const Icon(
+              Icons.keyboard_arrow_left,
+              color: Colors.black,
+            ),
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -113,13 +160,14 @@ class _PostQuestionState extends State<PostQuestion> {
                     value: 'Math',
                   ),
                 ],
-                value: dropdownValue,
+                value: _dropDownValue,
                 onChanged: dropdownCallback,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
+                controller: titleController,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
                   label: Text(
@@ -173,6 +221,7 @@ class _PostQuestionState extends State<PostQuestion> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: contentController,
                     maxLines: null,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
@@ -187,25 +236,26 @@ class _PostQuestionState extends State<PostQuestion> {
                 height: 20,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () => selectBannerImage(),
                 child: DottedBorder(
                   borderType: BorderType.RRect,
-                  radius: const Radius.circular(12),
-                  padding: const EdgeInsets.all(6),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    child: Container(
-                      height: 80,
-                      width: double.infinity,
-                      // color: Colors.amber,
-                      child: Center(
-                        child: Text(
-                          'Add Image (If Necessary)',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ),
+                  dashPattern: const [10, 4],
+                  strokeCap: StrokeCap.round,
+                  radius: const Radius.circular(10),
+                  color: Colors.black,
+                  child: Container(
+                    // width: double.infinity,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: bannerFile != null
+                          ? Image.file(
+                              bannerFile!,
+                              fit: BoxFit.fill,
+                            )
+                          : const Icon(Icons.camera_alt_outlined),
                     ),
                   ),
                 ),
@@ -217,7 +267,7 @@ class _PostQuestionState extends State<PostQuestion> {
                 width: double.infinity,
                 height: 40,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => save(user!, context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                   ),

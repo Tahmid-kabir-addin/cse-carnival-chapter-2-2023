@@ -3,6 +3,7 @@ import 'package:reachout2/common/error_text.dart';
 import 'package:reachout2/common/loader.dart';
 import 'package:reachout2/constants/constants.dart';
 import 'package:reachout2/features/auth/controller/auth_controller.dart';
+import 'package:reachout2/features/home/controller/home_controller.dart';
 import 'package:reachout2/features/home/screens/Studenthome_screen/widgets/toggle_button_child.dart';
 
 import 'widgets/blog_card.dart';
@@ -130,21 +131,22 @@ class _StudentProfileState extends ConsumerState<StudentProfile> {
               const SizedBox(
                 height: 30,
               ),
-              ref.watch(getUserDataProvider(user!.uid)).when(
-                  data: (posts) {
-                    if (isSelected[0])
+              ref.watch(userPostsProvider).when(
+                  data: (data) {
+                    if (isSelected[0]) {
                       return Container(
                         height: 500,
                         child: ListView.separated(
-                          itemCount: 10,
+                          itemCount: data.length,
                           itemBuilder: (context, index) {
                             return BlogCard(
-                              imagePath: Constants.avatarDefault,
-                              authorName: 'Muntasir Mamun',
-                              title: 'Hello Brother',
-                              subtitle: 'Helllo guysssssss',
-                              blogImagePath: Constants.scienceBanner,
-                              tags: ['Science'],
+                              imagePath: user.profilePic,
+                              authorName: user.name,
+                              title: data[index].title,
+                              blogImagePath: data[index].banner == ''
+                                  ? Constants.avatarDefault
+                                  : data[index].banner,
+                              tags: [data[index].category],
                               rootContext: context,
                               onremoveTap: () {},
                               takeToAuthorProfile: () {},
@@ -156,7 +158,10 @@ class _StudentProfileState extends ConsumerState<StudentProfile> {
                           ),
                         ),
                       );
-                      return const SizedBox(height: 0,);
+                    }
+                    return const SizedBox(
+                      height: 0,
+                    );
                   },
                   error: (error, stackTrace) =>
                       ErrorText(error: error.toString()),

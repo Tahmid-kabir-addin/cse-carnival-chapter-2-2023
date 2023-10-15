@@ -28,6 +28,8 @@ class Constants {
   static const String reportPic = "assets/images/report.png";
   static const String homeworkPic = "assets/images/homework.png";
   static const String homework2Pic = "assets/images/homework2.png";
+  static const String voiceAssistant = "assets/images/voiceAssistat.png";
+  static const String student = "assets/images/student.jpg";
 
  
 }

@@ -7,11 +7,12 @@ import 'package:reachout2/features/auth/controller/auth_controller.dart';
 import '../../features/auth/controller/auth_controller.dart';
 
 class SignInButton extends ConsumerWidget {
-  const SignInButton({super.key});
+  final String role;
+  const SignInButton({super.key, required this.role});
   
   void signInWithGoogle(BuildContext context, WidgetRef ref) {
     print("Inside SignInWithGoogle sign_in_button class");
-    ref.read(authControllerProvider.notifier).signInWithGoogle(context);
+    ref.read(authControllerProvider.notifier).signInWithGoogle(context, role);
   }
   
   @override

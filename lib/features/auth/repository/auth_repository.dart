@@ -38,7 +38,7 @@ class AuthRepository {
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
 
-  Future<Either<Failure, UserModel>> signInWithGoogle() async {
+  Future<Either<Failure, UserModel>> signInWithGoogle(String role) async {
     try {
       print('Inside signInWithGoogle of auth_repository class');
 
@@ -66,8 +66,8 @@ class AuthRepository {
           courses: [],
           isPremium: false,
           upvote: [],
+          role: role,
         );
-
         await _users.doc(userCredential.user!.uid).set(userModel.toMap());
       } else {
         print("old user calling getUserData auth_repo");

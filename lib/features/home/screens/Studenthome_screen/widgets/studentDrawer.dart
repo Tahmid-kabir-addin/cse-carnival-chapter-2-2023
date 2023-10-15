@@ -21,6 +21,7 @@ class studentDrawer extends ConsumerWidget {
     void navigateToProfile(BuildContext context) {
       Routemaster.of(context).push('/student-profile');
     }
+
     return Drawer(
       width: 250,
       child: SafeArea(
@@ -87,10 +88,10 @@ class studentDrawer extends ConsumerWidget {
               ),
             ),
             SizedBox(
-              height: 300,
+              height: 450,
             ),
             ListTile(
-              onTap: () {},
+              onTap: () => ref.watch(authControllerProvider.notifier).logOut(),
               leading: Icon(
                 Icons.exit_to_app,
                 color: Colors.red,

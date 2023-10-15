@@ -13,6 +13,7 @@ class UserModel {
   final List<String> upvote;
   final List<String> courses;
   final List<String> posts;
+  final String role;
 
   UserModel({
     required this.name,
@@ -24,8 +25,8 @@ class UserModel {
     required this.upvote,
     required this.courses,
     required this.posts,
+    required this.role,
   });
-
 
   UserModel copyWith({
     String? name,
@@ -37,6 +38,7 @@ class UserModel {
     List<String>? upvote,
     List<String>? courses,
     List<String>? posts,
+    String? role,
   }) {
     return UserModel(
       name: name ?? this.name,
@@ -48,6 +50,7 @@ class UserModel {
       upvote: upvote ?? this.upvote,
       courses: courses ?? this.courses,
       posts: posts ?? this.posts,
+      role: role ?? this.role,
     );
   }
 
@@ -62,13 +65,19 @@ class UserModel {
       'upvote': upvote,
       'courses': courses,
       'posts': posts,
+      'role': role,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    List<String> upvote = (map['upvote'] as List<dynamic>).map((upvote) => upvote.toString()).toList();
-    List<String> courses = (map['courses'] as List<dynamic>).map((course) => course.toString()).toList();
-    List<String> posts = (map['posts'] as List<dynamic>).map((post) => post.toString()).toList();
+    List<String> upvote = (map['upvote'] as List<dynamic>)
+        .map((upvote) => upvote.toString())
+        .toList();
+    List<String> courses = (map['courses'] as List<dynamic>)
+        .map((course) => course.toString())
+        .toList();
+    List<String> posts =
+        (map['posts'] as List<dynamic>).map((post) => post.toString()).toList();
     return UserModel(
       name: map['name'] as String,
       email: map['email'] as String,
@@ -79,48 +88,51 @@ class UserModel {
       upvote: upvote,
       courses: courses,
       posts: posts,
+      role: map['role'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'UserModel(name: $name, email: $email, profilePic: $profilePic, uid: $uid, isAuthenticated: $isAuthenticated, isPremium: $isPremium, upvote: $upvote, courses: $courses, posts: $posts)';
+    return 'UserModel(name: $name, email: $email, profilePic: $profilePic, uid: $uid, isAuthenticated: $isAuthenticated, isPremium: $isPremium, upvote: $upvote, courses: $courses, posts: $posts, role: $role)';
   }
 
   @override
   bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.name == name &&
-      other.email == email &&
-      other.profilePic == profilePic &&
-      other.uid == uid &&
-      other.isAuthenticated == isAuthenticated &&
-      other.isPremium == isPremium &&
-      listEquals(other.upvote, upvote) &&
-      listEquals(other.courses, courses) &&
-      listEquals(other.posts, posts);
+
+    return other.name == name &&
+        other.email == email &&
+        other.profilePic == profilePic &&
+        other.uid == uid &&
+        other.isAuthenticated == isAuthenticated &&
+        other.isPremium == isPremium &&
+        listEquals(other.upvote, upvote) &&
+        listEquals(other.courses, courses) &&
+        listEquals(other.posts, posts) &&
+        other.role == role;
   }
 
   @override
   int get hashCode {
     return name.hashCode ^
-      email.hashCode ^
-      profilePic.hashCode ^
-      uid.hashCode ^  
-      isAuthenticated.hashCode ^
-      isPremium.hashCode ^
-      upvote.hashCode ^
-      courses.hashCode ^
-      posts.hashCode;
+        email.hashCode ^
+        profilePic.hashCode ^
+        uid.hashCode ^
+        isAuthenticated.hashCode ^
+        isPremium.hashCode ^
+        upvote.hashCode ^
+        courses.hashCode ^
+        posts.hashCode ^
+        role.hashCode;
   }
 }
-// class UserModel {
+// / / class UserModel {
 //   final String name;
 //   final String profilePic;
 //   final String banner;

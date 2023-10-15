@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/constants/image_strings.dart';
+import 'package:reachout2/constants/constants.dart';
 
 class RoleSelection extends StatefulWidget {
   const RoleSelection({super.key});
 
   @override
   State<RoleSelection> createState() => _RoleSelectionState();
+
 }
 
 class _RoleSelectionState extends State<RoleSelection> {
+  String _role = 'student';
+  void setRole(String role) {
+    setState(() {
+      _role = role;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +56,7 @@ class _RoleSelectionState extends State<RoleSelection> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => setRole('student'),
                   child: Container(
                     width: 155,
                     height: 188,
@@ -72,7 +79,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                         Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: Image.asset(
-                            studentPic,
+                            Constants.studenetPic,
                             height: 80,
                             width: 80,
                           ),
@@ -93,7 +100,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => setRole('expert'),
                   child: Container(
                     width: 155,
                     height: 188,
@@ -116,7 +123,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                         Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: Image.asset(
-                            expertPic,
+                            Constants.avatarDefault,
                             height: 80,
                             width: 80,
                           ),
